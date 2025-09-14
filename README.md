@@ -1,2 +1,47 @@
 # TodayCat
 「今日の猫さん」というアプリです。
+
+## コマンドたち
+
+アプリ作成
+```bash
+$ docker compose run --rm app sh -c 'npx create-next-app . --typescript'
+````
+
+npm install
+```bash
+$ docker compose run --rm app sh -c 'npm install'
+````
+
+ファイルの権限を変更する
+```bash
+$ sudo chown $USER:$USER -R src/
+```
+
+アプリ開発時
+```bash
+$ docker compose up -d
+````
+
+起動したコンテナに入る<br>
+compose.yamlの command: sh -c "npm run dev" をコメントアウトしてから、
+```bash
+$ docker compose exec app bash
+````
+
+アプリ開発終了時
+```bash
+$ docker compose down
+````
+
+本番環境で確認
+```bash
+$ npm start
+````
+
+## .env.local
+```bash
+HOSTNAME=localhost
+PORT=3000
+HOST=http://$HOSTNAME:$PORT
+```
