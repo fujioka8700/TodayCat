@@ -44,7 +44,7 @@ export default function Home() {
   return (
     <div className="relative h-screen">
       <Header />
-      <div className="flex justify-center items-center h-screen py-2">
+      <div className="flex justify-center items-center py-2 pt-10">
         {/* <h1 className="text-2xl mb-4">猫画像アプリ</h1> */}
         {isLoading ? (
           <ClipLoader loading color="#808080" size={50} />
