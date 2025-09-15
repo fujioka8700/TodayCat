@@ -13,7 +13,7 @@ const CatImageDisplay = ({ imageUrl }: CatImageDisplayProps) => {
           alt="猫の画像を表示します。"
           width={500}
           height={500}
-          className="rounded-lg w-full h-auto"
+          // className="rounded-sm w-full h-auto"
         />
       </div>
     );

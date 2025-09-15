@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: '猫画像アプリ',
+  title: '今日のネコ',
   description: 'ボタンを押すたびに新しい猫の画像が表示されます。',
 };
 
