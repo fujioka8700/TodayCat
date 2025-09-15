@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import CatImageDisplay from './components/CatImageDisplay';
 import { MyButton } from './components/MyButton';
 
@@ -22,7 +22,7 @@ export default function Home() {
 
   const handleClick = async (): Promise<void> => {
     try {
-      const catImage = await fetchCatImage();
+      const catImage: SearchCatImage = await fetchCatImage();
       setCatImageUrl(catImage.url);
     } catch (_error) {
       // console.error('Failed to fetch cat image:', error);
@@ -31,11 +31,16 @@ export default function Home() {
     }
   };
 
+  // useEffectフックは、コンポーネントが最初にマウントされた時、一度だけ実行されます。
+  useEffect(() => {
+    handleClick();
+  }, []); // 空の依存配列 [] は、マウント時にのみ実行されることを保証します。
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
-      <h1 className="text-2xl">猫画像アプリ</h1>
-      <CatImageDisplay imageUrl={catImageUrl} className="my-4" />
-      <MyButton onClick={handleClick} />
+      <h1 className="text-2xl mb-4">猫画像アプリ</h1>
+      <CatImageDisplay imageUrl={catImageUrl} />
+      <MyButton onClick={handleClick} className="mt-4" />
     </div>
   );
 }

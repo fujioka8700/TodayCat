@@ -2,19 +2,18 @@ import Image from 'next/image';
 
 type CatImageDisplayProps = {
   imageUrl: string | null;
-  className?: string; // プロパティを追加し、?で省略可能にする
 };
 
-const CatImageDisplay = ({ imageUrl, className }: CatImageDisplayProps) => {
+const CatImageDisplay = ({ imageUrl }: CatImageDisplayProps) => {
   if (imageUrl) {
     return (
-      <div className={className}>
+      <div>
         <Image
           src={imageUrl}
           alt="猫の画像を表示します。"
           width={500}
           height={500}
-          className="rounded-lg"
+          className="rounded-lg w-full h-auto"
         />
       </div>
     );
