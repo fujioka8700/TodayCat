@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import ClipLoader from 'react-spinners/ClipLoader';
 import CatImageDisplay from './components/CatImageDisplay';
 import { MyButton } from './components/MyButton';
+import Header from './components/Header';
 
 interface SearchCatImage {
   id: string;
@@ -41,14 +42,22 @@ export default function Home() {
   }, []); // 空の依存配列 [] は、マウント時にのみ実行されることを保証します。
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
-      <h1 className="text-2xl mb-4">猫画像アプリ</h1>
-      {isLoading ? (
-        <ClipLoader loading color="#808080" size={50} />
-      ) : (
-        <CatImageDisplay imageUrl={catImageUrl} />
-      )}
-      <MyButton onClick={handleClick} className="mt-4" />
+    <div className="relative h-screen">
+      <Header />
+      <div className="flex justify-center items-center h-screen py-2">
+        {/* <h1 className="text-2xl mb-4">猫画像アプリ</h1> */}
+        {isLoading ? (
+          <ClipLoader loading color="#808080" size={50} />
+        ) : (
+          <CatImageDisplay imageUrl={catImageUrl} />
+        )}
+      </div>
+      <div>
+        <MyButton
+          onClick={handleClick}
+          className="absolute bottom-1/10 left-1/2 -translate-x-1/2"
+        />
+      </div>
     </div>
   );
 }
